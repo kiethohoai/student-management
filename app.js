@@ -2,6 +2,27 @@ const express = require('express');
 const app = express();
 const port = 5173;
 
+const studentList = [
+  {
+    id: 1,
+    fullName: 'Le Thi Dao',
+    age: 18,
+    numberClass: 12,
+  },
+  {
+    id: 2,
+    fullName: 'Ngo Van Buoi',
+    age: 17,
+    numberClass: 11,
+  },
+  {
+    id: 3,
+    fullName: 'Le Thi Chuoi',
+    age: 16,
+    numberClass: 10,
+  },
+];
+
 // convert req, res => json
 app.use(express.json());
 
