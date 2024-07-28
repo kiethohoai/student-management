@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
 
 // todo Get all students
 app.get('/students', (req, res) => {
-  res.send('Student List');
+  res.status(200).send(studentList);
 });
 
 // todo Get student details
