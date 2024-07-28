@@ -39,7 +39,16 @@ app.get('/students', (req, res) => {
 // todo Get student details
 app.get('/students/:id', (req, res) => {
   const id = req.params.id;
-  res.send(`Student Details ID: ${id}`);
+  const index = studentList.findIndex((student) => {
+    return student.id == id;
+  });
+
+  if (index !== -1) {
+    const student = studentList[index];
+    res.status(200).send(student);
+  } else {
+    res.status(404).send('Not found!');
+  }
 });
 
 // todo Add new Student
