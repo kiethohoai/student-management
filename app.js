@@ -31,13 +31,17 @@ app.post('/students', (req, res) => {
 // todo Update a Student
 app.put('/students/:id', (req, res) => {
   const { id } = req.params;
-  console.log("🚀CHECK  id =", id)
+  console.log('🚀CHECK  id =', id);
   const student = req.body;
-  console.log("🚀CHECK  student =", student)
+  console.log('🚀CHECK  student =', student);
   res.send(`Update Student ID = ${id}`);
 });
 
 // todo Delete a Student
+app.delete('/students/:id', (req, res) => {
+  const { id } = req.params;
+  res.send(`Delete Student ID: ${id}`);
+});
 
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);

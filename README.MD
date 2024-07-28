@@ -6,3 +6,4 @@ Bai-4-Router-get-list-student
 Bai-5-Router-get-detail-student
 Bai-6-Router-create-student
 Bai-7-Router-update-student-phan-2
+Bai-8-Router-delete-student.mp4_2
