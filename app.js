@@ -53,17 +53,20 @@ app.get('/students/:id', (req, res) => {
 
 // todo Add new Student
 app.post('/students', (req, res) => {
-  const student = req.body;
-  console.log('🚀CHECK  student =', student);
-  res.send(`Add New Student`);
+  let student = req.body;
+  student = {
+    ...student,
+    id: Math.random(),
+  };
+
+  studentList.push(student);
+  res.status(201).send(student);
 });
 
 // todo Update a Student
 app.put('/students/:id', (req, res) => {
   const { id } = req.params;
-  console.log('🚀CHECK  id =', id);
   const student = req.body;
-  console.log('🚀CHECK  student =', student);
   res.send(`Update Student ID = ${id}`);
 });
 
