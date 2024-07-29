@@ -33,10 +33,10 @@ const createStudent = async (req, res) => {
 };
 
 // todo updateStudent
-const updateStudent = (req, res) => {
+const updateStudent = async (req, res) => {
   const { id } = req.params;
   const { fullName, age, numberClass } = req.body;
-  const updatedStudent = putStudent(id, fullName, age, numberClass);
+  const updatedStudent = await putStudent(id, fullName, age, numberClass);
 
   if (updateStudent) res.status(200).send(updatedStudent);
   else res.status(404).send(`Can't not update!`);

@@ -47,17 +47,15 @@ const addStudent = async (dataStudent) => {
   return newStudent;
 };
 
-const putStudent = (id, fullName, age, numberClass) => {
-  let index = studentList.findIndex((student) => student.id == id);
-  if (index !== -1) {
-    studentList[index] = {
-      ...studentList[index],
-      fullName,
-      age,
-      numberClass,
-    };
+const putStudent = async (id, fullName, age, numberClass) => {
+  const studentUpdate = await getDetail(id);
 
-    return studentList[index];
+  if (studentUpdate) {
+    studentUpdate.fullName = fullName;
+    studentUpdate.age = age;
+    studentUpdate.numberClass = numberClass;
+    const curStudentUpdated = await studentUpdate.save();
+    return curStudentUpdated;
   } else {
     return false;
   }

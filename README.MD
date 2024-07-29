@@ -29,4 +29,5 @@ Course 6 NodeJS with MySQL & Sequelize
 10 Model student
 11 Create student
 12 Get All & Detail Student
+13 Update student
 
