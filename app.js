@@ -66,8 +66,15 @@ app.post('/students', (req, res) => {
 // todo Update a Student
 app.put('/students/:id', (req, res) => {
   const { id } = req.params;
-  const student = req.body;
-  res.send(`Update Student ID = ${id}`);
+  const { fullName, age, numberClass } = req.body;
+  let index = studentList.findIndex((student) => student.id === +id);
+
+  if (index !== -1) {
+    studentList[index] = { ...studentList[index], fullName, age, numberClass };
+    res.status(200).send(studentList[index]);
+  } else {
+    res.status(404).send(`Can't not update!`);
+  }
 });
 
 // todo Delete a Student
@@ -76,6 +83,4 @@ app.delete('/students/:id', (req, res) => {
   res.send(`Delete Student ID: ${id}`);
 });
 
-app.listen(port, () => {
-  console.log(`App listening on port ${port}`);
-});
+app.listen(port, () => {});

@@ -11,3 +11,4 @@ Bai-9-Data-student
 Bai-10-Feature-get-list-student
 Bai-11-Feature-get-detail
 Bai-12-Feature-create-student
+Bai-13-Feature-update-student
