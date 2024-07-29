@@ -28,5 +28,5 @@ Course 6 NodeJS with MySQL & Sequelize
 09 Init sequelize student management
 10 Model student
 11 Create student
-
+12 Get All & Detail Student
 

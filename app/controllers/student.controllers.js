@@ -7,16 +7,17 @@ const {
 } = require('./../services/student.services');
 
 // todo getStudentsAll
-const getStudentsAll = (req, res) => {
-  const studentList = getList();
+const getStudentsAll = async (req, res) => {
+  const studentList = await getList();
   if (studentList) return res.status(200).send(studentList);
   else return res.status(404).send('NOT FOUND');
 };
 
 // todo getStudentDetail
-getStudentDetail = (req, res) => {
+getStudentDetail = async (req, res) => {
   const id = req.params.id;
-  const student = getDetail(id);
+  const student = await getDetail(id);
+
   if (student) {
     res.status(200).send(student);
   } else {

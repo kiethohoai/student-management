@@ -1,3 +1,4 @@
+const { where } = require('sequelize');
 const { Student } = require('./../models/index');
 
 // data
@@ -24,22 +25,21 @@ let studentList = [
 
 // let studentList = [];
 
-const getList = () => {
+const getList = async () => {
+  const studentList = await Student.findAll();
   if (studentList.length > 0) return studentList;
   else return false;
 };
 
-const getDetail = (id) => {
-  const index = studentList.findIndex((student) => {
-    return student.id == id;
+const getDetail = async (id) => {
+  const student = await Student.findOne({
+    where: {
+      id,
+    },
   });
 
-  if (index !== -1) {
-    const student = studentList[index];
-    return student;
-  } else {
-    return false;
-  }
+  if (student) return student;
+  else return false;
 };
 
 const addStudent = async (dataStudent) => {
