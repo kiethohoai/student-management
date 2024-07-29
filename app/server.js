@@ -15,3 +15,7 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => {});
+
+// setup sequelize
+const { sequelize } = require('./models/index');
+sequelize.sync({ alter: true });

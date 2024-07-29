@@ -22,3 +22,8 @@ Bai-20-Middleware-validation
 
 Course 6 NodeJS with MySQL & Sequelize
 01 Intro MySQL & Sequelize
+02 Install và connect sequelize mysql2
+- npm i sequelize mysql2
+030405060708
+09 Init sequelize student management
+
