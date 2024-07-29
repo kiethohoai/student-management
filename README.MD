@@ -19,3 +19,6 @@ Bai-17-Controller-structure-folder
 Bai-18-Services-structure-folder
 Bai-19-Middleware-logger
 Bai-20-Middleware-validation
+
+Course 6 NodeJS with MySQL & Sequelize
+01 Intro MySQL & Sequelize
