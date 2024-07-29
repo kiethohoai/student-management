@@ -80,7 +80,15 @@ app.put('/students/:id', (req, res) => {
 // todo Delete a Student
 app.delete('/students/:id', (req, res) => {
   const { id } = req.params;
-  res.send(`Delete Student ID: ${id}`);
+
+  let index = studentList.findIndex((el) => el.id == id);
+  if (index !== -1) {
+    const studentDelete = studentList[index];
+    studentList.splice(index, 1);
+    res.status(200).send(studentDelete);
+  } else {
+    res.status(404).send(`NOT FOUND!`);
+  }
 });
 
 app.listen(port, () => {});
