@@ -1,3 +1,5 @@
+const { Student } = require('./../models/index');
+
 // data
 let studentList = [
   {
@@ -40,12 +42,8 @@ const getDetail = (id) => {
   }
 };
 
-const addStudent = (dataStudent) => {
-  const newStudent = {
-    id: Math.random(),
-    ...dataStudent,
-  };
-  studentList.push(newStudent);
+const addStudent = async (dataStudent) => {
+  const newStudent = await Student.create(dataStudent);
   return newStudent;
 };
 

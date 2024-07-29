@@ -25,9 +25,9 @@ getStudentDetail = (req, res) => {
 };
 
 // todo createStudent
-const createStudent = (req, res) => {
+const createStudent = async (req, res) => {
   let dataStudent = req.body;
-  const newStudent = addStudent(dataStudent);
+  let newStudent = await addStudent(dataStudent);
   res.status(201).send(newStudent);
 };
 

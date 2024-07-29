@@ -26,4 +26,7 @@ Course 6 NodeJS with MySQL & Sequelize
 - npm i sequelize mysql2
 030405060708
 09 Init sequelize student management
+10 Model student
+11 Create student
+
 
