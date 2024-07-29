@@ -1,6 +1,5 @@
 const express = require('express');
-const app = express();
-const port = 5173;
+const studentRouter = express.Router();
 
 const studentList = [
   {
@@ -23,21 +22,13 @@ const studentList = [
   },
 ];
 
-// convert req, res => json
-app.use(express.json());
-
-// config routes
-app.get('/', (req, res) => {
-  res.send('Home Page');
-});
-
 // todo Get all students
-app.get('/students', (req, res) => {
+studentRouter.get('/', (req, res) => {
   res.status(200).send(studentList);
 });
 
 // todo Get student details
-app.get('/students/:id', (req, res) => {
+studentRouter.get('/:id', (req, res) => {
   const id = req.params.id;
   const index = studentList.findIndex((student) => {
     return student.id == id;
@@ -52,7 +43,7 @@ app.get('/students/:id', (req, res) => {
 });
 
 // todo Add new Student
-app.post('/students', (req, res) => {
+studentRouter.post('/', (req, res) => {
   let student = req.body;
   student = {
     ...student,
@@ -64,7 +55,7 @@ app.post('/students', (req, res) => {
 });
 
 // todo Update a Student
-app.put('/students/:id', (req, res) => {
+studentRouter.put('/:id', (req, res) => {
   const { id } = req.params;
   const { fullName, age, numberClass } = req.body;
   let index = studentList.findIndex((student) => student.id === +id);
@@ -78,7 +69,7 @@ app.put('/students/:id', (req, res) => {
 });
 
 // todo Delete a Student
-app.delete('/students/:id', (req, res) => {
+studentRouter.delete('/:id', (req, res) => {
   const { id } = req.params;
 
   let index = studentList.findIndex((el) => el.id == id);
@@ -91,4 +82,4 @@ app.delete('/students/:id', (req, res) => {
   }
 });
 
-app.listen(port, () => {});
+module.exports = studentRouter;

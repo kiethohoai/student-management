@@ -4,7 +4,7 @@
   "description": "V5 ExpressJS with Student Management\r Bai-1-Gioi-thieu-ExpressJS\r Bai-2-Hello-world",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.js",
+    "dev": "nodemon app/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
