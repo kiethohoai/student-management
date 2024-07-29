@@ -43,10 +43,10 @@ const updateStudent = async (req, res) => {
 };
 
 // todo deleteStudent
-const deleteStudent = (req, res) => {
+const deleteStudent = async (req, res) => {
   const { id } = req.params;
 
-  const studentDelete = deleteById(id);
+  const studentDelete = await deleteById(id);
 
   if (studentDelete) {
     res.status(200).send(studentDelete);

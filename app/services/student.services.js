@@ -61,11 +61,15 @@ const putStudent = async (id, fullName, age, numberClass) => {
   }
 };
 
-const deleteById = (id) => {
-  let index = studentList.findIndex((el) => el.id == id);
-  if (index !== -1) {
-    const studentDelete = studentList[index];
-    studentList.splice(index, 1);
+const deleteById = async (id) => {
+  const studentDelete = await getDetail(id);
+
+  if (studentDelete) {
+    await Student.destroy({
+      where: {
+        id,
+      },
+    });
 
     return studentDelete;
   } else {
