@@ -1,0 +1,87 @@
+// data
+let studentList = [
+  {
+    id: 1,
+    fullName: 'Le Thi Dao',
+    age: 18,
+    numberClass: 12,
+  },
+  {
+    id: 2,
+    fullName: 'Ngo Van Buoi',
+    age: 17,
+    numberClass: 11,
+  },
+  {
+    id: 3,
+    fullName: 'Le Thi Chuoi',
+    age: 16,
+    numberClass: 10,
+  },
+];
+
+// let studentList = [];
+
+const getList = () => {
+  if (studentList.length > 0) return studentList;
+  else return false;
+};
+
+const getDetail = (id) => {
+  const index = studentList.findIndex((student) => {
+    return student.id == id;
+  });
+
+  if (index !== -1) {
+    const student = studentList[index];
+    return student;
+  } else {
+    return false;
+  }
+};
+
+const addStudent = (dataStudent) => {
+  const newStudent = {
+    id: Math.random(),
+    ...dataStudent,
+  };
+  studentList.push(newStudent);
+  return newStudent;
+};
+
+const putStudent = (id, fullName, age, numberClass) => {
+  let index = studentList.findIndex((student) => student.id == id);
+  if (index !== -1) {
+    studentList[index] = {
+      ...studentList[index],
+      fullName,
+      age,
+      numberClass,
+    };
+
+    return studentList[index];
+  } else {
+    return false;
+  }
+};
+
+const deleteById = (id) => {
+  let index = studentList.findIndex((el) => el.id == id);
+  if (index !== -1) {
+    const studentDelete = studentList[index];
+    studentList.splice(index, 1);
+
+    return studentDelete;
+  } else {
+    return false;
+  }
+};
+
+// Exports
+module.exports = {
+  getList,
+  getDetail,
+  addStudent,
+  putStudent,
+  deleteById,
+};

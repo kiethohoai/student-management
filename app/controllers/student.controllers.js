@@ -1,75 +1,53 @@
-// data
-const studentList = [
-  {
-    id: 1,
-    fullName: 'Le Thi Dao',
-    age: 18,
-    numberClass: 12,
-  },
-  {
-    id: 2,
-    fullName: 'Ngo Van Buoi',
-    age: 17,
-    numberClass: 11,
-  },
-  {
-    id: 3,
-    fullName: 'Le Thi Chuoi',
-    age: 16,
-    numberClass: 10,
-  },
-];
+const {
+  getList,
+  getDetail,
+  addStudent,
+  putStudent,
+  deleteById,
+} = require('./../services/student.services');
 
+// todo getStudentsAll
 const getStudentsAll = (req, res) => {
-  res.status(200).send(studentList);
+  const studentList = getList();
+  if (studentList) return res.status(200).send(studentList);
+  else return res.status(404).send('NOT FOUND');
 };
 
-const getStudentDetail = (req, res) => {
+// todo getStudentDetail
+getStudentDetail = (req, res) => {
   const id = req.params.id;
-  const index = studentList.findIndex((student) => {
-    return student.id == id;
-  });
-
-  if (index !== -1) {
-    const student = studentList[index];
+  const student = getDetail(id);
+  if (student) {
     res.status(200).send(student);
   } else {
     res.status(404).send('Not found!');
   }
 };
 
+// todo createStudent
 const createStudent = (req, res) => {
   let dataStudent = req.body;
-
-  const newStudent = {
-    id: Math.random(),
-    ...dataStudent,
-  };
-
-  studentList.push(newStudent);
+  const newStudent = addStudent(dataStudent);
   res.status(201).send(newStudent);
 };
 
+// todo updateStudent
 const updateStudent = (req, res) => {
   const { id } = req.params;
   const { fullName, age, numberClass } = req.body;
-  let index = studentList.findIndex((student) => student.id === +id);
+  const updatedStudent = putStudent(id, fullName, age, numberClass);
 
-  if (index !== -1) {
-    studentList[index] = { ...studentList[index], fullName, age, numberClass };
-    res.status(200).send(studentList[index]);
-  } else {
-    res.status(404).send(`Can't not update!`);
-  }
+  if (updateStudent) res.status(200).send(updatedStudent);
+  else res.status(404).send(`Can't not update!`);
 };
 
+// todo deleteStudent
 const deleteStudent = (req, res) => {
   const { id } = req.params;
 
-  let index = studentList.findIndex((el) => el.id == id);
-  if (index !== -1) {
-    const studentDelete = studentList[index];
-    studentList.splice(index, 1);
+  const studentDelete = deleteById(id);
+
+  if (studentDelete) {
     res.status(200).send(studentDelete);
   } else {
     res.status(404).send(`NOT FOUND!`);
