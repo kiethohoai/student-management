@@ -8,6 +8,10 @@ const {
   deleteStudent,
 } = require('./../controllers/student.controllers');
 const { logFeature } = require('../middlewares/logger/log-feature');
+const {
+  checkEmpty,
+  checkNumberClass,
+} = require('../middlewares/validations/student.validation');
 
 // todo Get all students
 studentRouter.get('/', logFeature, getStudentsAll);
@@ -16,7 +20,7 @@ studentRouter.get('/', logFeature, getStudentsAll);
 studentRouter.get('/:id', getStudentDetail);
 
 // todo Add new Student
-studentRouter.post('/', createStudent);
+studentRouter.post('/', checkEmpty, checkNumberClass, createStudent);
 
 // todo Update a Student
 studentRouter.put('/:id', updateStudent);
